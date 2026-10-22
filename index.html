@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif;background:#fafafa}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Compass First Six Weeks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EEF1F5; --surface:#FFFFFF; --surface-2:#E4E9F0; --ink:#131A25; --ink-2:#4A5466; --ink-3:#6E7889;
+  --line:#D3DAE4; --accent:#0D6C77; --accent-soft:#D5ECEE; --needle:#C9472B; --critical:#B3362B; --critical-soft:#F7DEDA;
+  --c-orch:#2A3B5A; --c-act:#A9640A; --c-tut:#2457C4; --c-con:#7040B5; --c-res:#1C7A57;
+  --phone:#0F151F; --phone-screen:#F8FAFC; --bubble:#FFFFFF; --on-hue:#FFFFFF;
+  --shadow:0 1px 2px rgba(19,26,37,.06),0 8px 24px rgba(19,26,37,.08);
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E131A; --surface:#161D27; --surface-2:#1E2733; --ink:#E6EBF2; --ink-2:#A4AFBF; --ink-3:#7F8A9B;
+    --line:#2B3645; --accent:#45B7C1; --accent-soft:#16363B; --needle:#F07655; --critical:#F07A6C; --critical-soft:#3A1E1C;
+    --c-orch:#A9B9D8; --c-act:#EFA746; --c-tut:#80A7F5; --c-con:#B897EC; --c-res:#5ECB9C;
+    --phone:#05080C; --phone-screen:#111821; --bubble:#1B2430; --on-hue:#0B1016;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E131A; --surface:#161D27; --surface-2:#1E2733; --ink:#E6EBF2; --ink-2:#A4AFBF; --ink-3:#7F8A9B;
+  --line:#2B3645; --accent:#45B7C1; --accent-soft:#16363B; --needle:#F07655; --critical:#F07A6C; --critical-soft:#3A1E1C;
+  --c-orch:#A9B9D8; --c-act:#EFA746; --c-tut:#80A7F5; --c-con:#B897EC; --c-res:#5ECB9C;
+  --phone:#05080C; --phone-screen:#111821; --bubble:#1B2430; --on-hue:#0B1016;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;padding-inline:24px;padding-block:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3)}
+.wrap{max-width:1872px;margin:0 auto;display:flex;flex-direction:column;min-height:100%}
+
+/* header */
+.top{display:flex;align-items:center;gap:24px;padding-block:14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px}
+.brand svg{width:30px;height:30px}
+.brand-name{font-family:var(--f-display);font-weight:700;font-size:22px}
+.brand-sub{color:var(--ink-3);font-size:13px}
+.tabs-scroll{overflow-x:auto;flex:1;min-width:0}
+.tabs{display:flex;gap:4px;width:max-content;margin-left:auto}
+.tab{border:1px solid transparent;background:none;padding:7px 14px;border-radius:8px;cursor:pointer;color:var(--ink-2);font-weight:500;white-space:nowrap}
+.tab:hover{background:var(--surface-2)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.theme-btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;cursor:pointer;color:var(--ink-2);font-size:13px}
+
+/* week strip */
+.strip{display:flex;align-items:center;gap:12px;padding-block:14px;flex-wrap:wrap}
+.strip-title{display:flex;flex-direction:column;gap:2px;min-width:250px;flex:1}
+.strip-title h1{font-size:26px}
+.weeks{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;max-width:100%}
+.wk{display:flex;flex-direction:column;align-items:flex-start;gap:1px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 12px 8px;cursor:pointer;min-width:118px;position:relative}
+.wk .n{font-family:var(--f-mono);font-size:11px;color:var(--ink-3)}
+.wk .l{font-weight:600;font-size:13.5px;white-space:nowrap}
+.wk::before{content:"";position:absolute;left:12px;right:12px;top:-1px;height:3px;border-radius:0 0 3px 3px;background:var(--hue);opacity:.35}
+.wk[aria-current="true"]{border-color:var(--hue);box-shadow:inset 0 0 0 1px var(--hue)}
+.wk[aria-current="true"]::before{opacity:1}
+.nav{display:flex;gap:6px}
+.nav button{border:1px solid var(--line);background:var(--surface);border-radius:8px;width:38px;height:38px;cursor:pointer;font-size:16px}
+.nav button:disabled{opacity:.35;cursor:default}
+.hint{font-size:12px;color:var(--ink-3)}
+
+/* panels */
+.panel{display:none;flex:1;padding-bottom:24px}
+.panel.on{display:block}
+.flow{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:24px;align-items:start}
+.flow>*{min-width:0}
+.pane-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.pane-head h2{font-size:17px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;padding:2px;background:var(--surface)}
+.seg button{border:0;background:none;padding:5px 12px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:500;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+:root[data-theme="dark"] .seg button[aria-pressed="true"]{color:#06181B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .seg button[aria-pressed="true"]{color:#06181B}}
+
+/* phone */
+.left{display:flex;flex-direction:column;align-items:center}
+.left .pane-head{width:100%}
+.phone{width:372px;max-width:100%;height:760px;background:var(--phone);border-radius:46px;padding:12px;box-shadow:var(--shadow)}
+.screen{height:100%;background:var(--phone-screen);border-radius:36px;overflow:hidden;display:flex;flex-direction:column}
+.status{display:flex;justify-content:space-between;align-items:center;padding:12px 26px 6px;font-family:var(--f-mono);font-size:12px;color:var(--ink-2)}
+.status .pill{width:96px;height:24px;border-radius:14px;background:var(--phone)}
+.apphead{display:flex;align-items:center;gap:10px;padding:8px 18px 12px;border-bottom:1px solid var(--line)}
+.apphead svg{width:26px;height:26px}
+.apphead .t{font-family:var(--f-display);font-weight:700;font-size:18px;line-height:1}
+.apphead .s{font-size:12px;color:var(--ink-3)}
+.feed{flex:1;overflow:auto;padding:14px 14px 18px;display:flex;flex-direction:column;gap:10px}
+.msg{background:var(--bubble);border:1px solid var(--line);border-radius:16px;padding:12px 13px;display:flex;flex-direction:column;gap:8px}
+.msg .from{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--hue);text-transform:uppercase;letter-spacing:.06em}
+.msg .from i{width:8px;height:8px;border-radius:50%;background:var(--hue);display:inline-block}
+.msg p{font-size:14.5px;line-height:1.42}
+.msg .why{font-size:12px;color:var(--ink-3)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.acts span{font-size:13px;font-weight:600;padding:7px 11px;border-radius:10px;border:1px solid var(--line);color:var(--ink-2)}
+.acts span.p{background:var(--hue);border-color:var(--hue);color:var(--on-hue)}
+.goal{font-family:var(--f-display);font-size:16px;line-height:1.3;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+.tog{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;padding:6px 0;border-top:1px solid var(--line)}
+.tog:first-of-type{border-top:0}
+.sw{width:34px;height:20px;border-radius:12px;background:var(--line);position:relative;flex:none}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.sw.on{background:var(--c-res)}
+.sw.on::after{left:16px}
+.elig{font-family:var(--f-mono);font-size:11.5px;color:var(--c-res);background:color-mix(in srgb,var(--c-res) 12%,transparent);padding:6px 9px;border-radius:8px}
+.plan{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13px}
+.plan b{font-family:var(--f-mono);font-weight:500;color:var(--ink-3);font-size:12px}
+.person{display:flex;gap:10px;align-items:center}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--hue);color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px;flex:none;color:var(--on-hue)}
+.opt{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:10px;background:var(--surface-2);font-size:13.5px}
+.opt small{color:var(--ink-3);font-size:12px}
+.crisis{font-size:13px;font-weight:600;color:var(--critical);background:var(--critical-soft);border-radius:10px;padding:8px 10px}
+.fam-note{font-size:12px;color:var(--ink-3);display:flex;gap:6px;align-items:flex-start}
+.phone-cap{margin-top:10px;font-size:12.5px;color:var(--ink-3);text-align:center;max-width:372px}
+
+/* right */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.diagram-card{padding:10px 14px 6px}
+.diagram-scroll{overflow-x:auto}
+.diagram-scroll svg{display:block;width:100%;min-width:640px;height:auto}
+.dg-node rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.dg-node text{fill:var(--ink);font-family:var(--f-body);font-size:15px;font-weight:600}
+.dg-node text.sub{fill:var(--ink-3);font-size:12.5px;font-weight:400;font-family:var(--f-mono)}
+.dg-node .dot{fill:var(--hue)}
+.dg-node.dim{opacity:.38}
+.dg-node.act rect{stroke:var(--hue);stroke-width:3;fill:color-mix(in srgb,var(--hue) 10%,var(--surface))}
+.dg-node.sig rect{stroke:var(--hue);stroke-width:2;stroke-dasharray:6 5}
+.dg-guard rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.dg-guard text{fill:var(--ink-2);font-family:var(--f-body);font-size:14px;font-weight:600}
+.dg-guard.act rect{fill:var(--accent);stroke:var(--accent)}
+.dg-guard.act text{fill:#fff}
+:root[data-theme="dark"] .dg-guard.act text{fill:#06181B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dg-guard.act text{fill:#06181B}}
+.dg-guard.crit.act rect{fill:var(--critical);stroke:var(--critical)}
+.dg-guard.crit.act text{fill:#fff}
+.dg-edge{fill:none;stroke:var(--line);stroke-width:2}
+.dg-edge.act{stroke:var(--hue);stroke-width:3.5;stroke-dasharray:9 7;animation:flow 1.1s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-32}}
+.dg-label{fill:var(--ink-3);font-family:var(--f-mono);font-size:12px;letter-spacing:.08em}
+.dg-call{fill:var(--hue);font-family:var(--f-mono);font-size:12.5px}
+.dg-band{fill:var(--surface-2);stroke:none}
+
+.log{margin-top:12px;padding:14px 18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 24px}
+.log-head{grid-column:1/-1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.log-head h3{font-size:18px}
+.agent-chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:20px;color:var(--hue);background:color-mix(in srgb,var(--hue) 13%,transparent)}
+.agent-chip i{width:8px;height:8px;border-radius:50%;background:var(--hue)}
+.kv{display:flex;flex-direction:column;gap:3px}
+.kv .k{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+.kv .v{font-size:14px}
+.kv.guard .v{font-weight:600}
+.kv.full{grid-column:1/-1}
+.cost-line{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums}
+.tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.04em;color:var(--needle);text-transform:uppercase}
+.course-tag{font-family:var(--f-mono);font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap}
+
+/* generic tab content */
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.section{padding:18px 20px;display:flex;flex-direction:column;gap:14px}
+.section h2{font-size:20px}
+.lede{color:var(--ink-2);max-width:68ch}
+.banner{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:10px;border:1px dashed var(--needle);color:var(--ink);font-size:14px;background:color-mix(in srgb,var(--needle) 7%,transparent)}
+.inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:13.5px;font-weight:600}
+.field input{font:inherit;font-family:var(--f-mono);font-variant-numeric:tabular-nums;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.field .tag{font-size:10px}
+.big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.big div{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:10px;background:var(--surface-2)}
+.big b{font-family:var(--f-display);font-size:28px;font-variant-numeric:tabular-nums;line-height:1.1}
+.big span{font-size:12.5px;color:var(--ink-2)}
+.bar{display:flex;height:30px;border-radius:7px;overflow:hidden;background:var(--surface-2)}
+.bar div{height:100%}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);font-weight:500;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.pill.lead{background:var(--accent-soft);color:var(--accent)}
+.pill.lag{background:color-mix(in srgb,var(--c-con) 14%,transparent);color:var(--c-con)}
+.pill.health{background:color-mix(in srgb,var(--c-act) 14%,transparent);color:var(--c-act)}
+.quad svg{width:100%;height:auto;display:block}
+.q-axis{stroke:var(--ink-3);stroke-width:1.5}
+.q-grid{stroke:var(--line);stroke-width:1;stroke-dasharray:4 5}
+.q-zone{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;fill:var(--ink-3)}
+.q-lbl{font-family:var(--f-body);font-size:14px;font-weight:600;fill:var(--ink)}
+.q-sub{font-family:var(--f-mono);font-size:11.5px;fill:var(--ink-3)}
+.q-ax{font-family:var(--f-mono);font-size:12px;fill:var(--ink-2)}
+.tests{display:flex;flex-direction:column;gap:0}
+.test{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.test:first-child{border-top:0}
+.test .r{font-family:var(--f-mono);font-size:11px;padding:2px 7px;border-radius:6px;background:var(--surface-2);color:var(--ink-2);height:fit-content;white-space:nowrap}
+.rules{display:flex;gap:8px;flex-wrap:wrap}
+.rules span{font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:8px}
+.timeline{display:grid;grid-template-columns:2fr 3fr 1fr 1.4fr;gap:4px}
+.timeline div{padding:10px 12px;border-radius:8px;background:var(--surface-2);display:flex;flex-direction:column;gap:2px;font-size:13px}
+.timeline div b{font-size:14px}
+.timeline div.live{background:var(--accent);color:#fff}
+:root[data-theme="dark"] .timeline div.live{color:#06181B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .timeline div.live{color:#06181B}}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.facts div{padding:12px 14px;border-radius:10px;background:var(--surface-2);display:flex;flex-direction:column;gap:3px}
+.facts b{font-family:var(--f-display);font-size:19px}
+.facts span{font-size:13px;color:var(--ink-2)}
+.risks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.risks div{padding:12px 14px;border:1px solid var(--line);border-radius:10px;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.risks b{font-size:14px}
+.jump{border:1px solid var(--line);background:var(--surface);border-radius:7px;padding:4px 10px;cursor:pointer;font-size:12.5px;white-space:nowrap}
+.foot{padding-block:12px 18px;color:var(--ink-3);font-size:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* capture mode */
+.capture *,.capture *::before,.capture *::after{transition:none!important;animation:none!important}
+.capture .hover-only{display:none!important}
+
+@media (prefers-reduced-motion: reduce){.dg-edge.act{animation:none}}
+
+@media (max-width:1180px){
+  .flow{grid-template-columns:minmax(0,1fr)}
+  .grid2{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  body{padding-inline:16px}
+  .strip-title h1{font-size:21px}
+  .phone{height:auto;border-radius:30px;padding:8px}
+  .screen{border-radius:24px;min-height:600px}
+  .tabs-scroll{flex-basis:100%;order:3}
+  .top{gap:12px}
+  .log{grid-template-columns:1fr}
+  .inputs{grid-template-columns:1fr}
+  .big,.facts,.risks{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr}
+  .hint{display:none}
+  .tabs{margin-left:0}
+}
+</style>
+
+<div class="wrap" id="app">
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 5 L19.5 16 L16 27 L12.5 16 Z" fill="var(--needle)"/><path d="M16 16 L19.5 16 L16 27 L12.5 16 Z" fill="currentColor" opacity=".85"/></svg>
+      <div><div class="brand-name">Compass</div><div class="brand-sub">Prototype · Group 13 · fictional data</div></div>
+    </div>
+    <div class="tabs-scroll"><nav class="tabs" role="tablist" aria-label="Views">
+      <button class="tab" role="tab" id="tab-flow" data-tab="flow">Student flow</button>
+      <button class="tab" role="tab" id="tab-cost" data-tab="cost">Cost</button>
+      <button class="tab" role="tab" id="tab-governance" data-tab="governance">Governance</button>
+      <button class="tab" role="tab" id="tab-pilot" data-tab="pilot">Pilot</button>
+      <button class="tab" role="tab" id="tab-course" data-tab="course">Course links</button>
+    </nav></div>
+    <button class="theme-btn" id="theme-btn" type="button">Theme</button>
+  </header>
+
+  <!-- FLOW -->
+  <section class="panel" id="panel-flow" role="tabpanel" aria-labelledby="tab-flow">
+    <div class="strip">
+      <div class="strip-title">
+        <span class="eyebrow" id="wk-eyebrow">Week 0</span>
+        <h1 id="wk-title">Goal and consent before any data</h1>
+      </div>
+      <div class="weeks" id="weeks" aria-label="Weeks"></div>
+      <div class="nav">
+        <button type="button" id="prev" aria-label="Previous week">&#8592;</button>
+        <button type="button" id="next" aria-label="Next week">&#8594;</button>
+      </div>
+    </div>
+    <div class="flow">
+      <div class="left">
+        <div class="pane-head">
+          <h2 id="left-title">What Sofia sees</h2>
+          <div class="seg" role="group" aria-label="Viewer">
+            <button type="button" id="view-student" aria-pressed="true">Student</button>
+            <button type="button" id="view-family" aria-pressed="false">Family</button>
+          </div>
+        </div>
+        <div class="phone"><div class="screen">
+          <div class="status"><span id="clock">9:41</span><span class="pill"></span><span>5G</span></div>
+          <div class="apphead">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="var(--ink)" stroke-width="2"/><path d="M16 5 L19.5 16 L16 27 L12.5 16 Z" fill="var(--needle)"/><path d="M16 16 L19.5 16 L16 27 L12.5 16 Z" fill="var(--ink)" opacity=".85"/></svg>
+            <div><div class="t" id="app-t">Compass</div><div class="s" id="app-s">Larkfield University</div></div>
+          </div>
+          <div class="feed" id="feed"></div>
+        </div></div>
+        <p class="phone-cap" id="phone-cap">Sofia, 18. Home in El Paso, TX. College 1,800 miles away.</p>
+      </div>
+      <div class="right">
+        <div class="pane-head"><h2>What happens behind it</h2><span class="hint hover-only">Use &#8592; &#8594; keys to move between weeks</span></div>
+        <div class="card diagram-card"><div class="diagram-scroll"><svg id="diagram" viewBox="0 0 1000 444" role="img" aria-label="Compass architecture: student and family, orchestrator, four agents, campus tools, guardrails"></svg></div></div>
+        <div class="card log" id="log"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST -->
+  <section class="panel" id="panel-cost" role="tabpanel" aria-labelledby="tab-cost">
+    <div class="strip"><div class="strip-title"><span class="eyebrow">Cost model · Course M1.3</span><h1>What one student costs per semester</h1></div></div>
+    <div class="banner"><span class="tag">Assumption</span><span>Every default below is an assumption. Verify before use. Change any input to test the model.</span></div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="card section">
+        <h2>Inputs</h2>
+        <form class="inputs" id="cost-form" onsubmit="return false">
+          <div class="field"><label for="c-students">Students in the pilot</label><input id="c-students" type="number" min="1" step="10" value="300"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-weeks">Weeks per semester</label><input id="c-weeks" type="number" min="1" step="1" value="15"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-actions">Agent actions per student per week</label><input id="c-actions" type="number" min="0" step="1" value="20"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-tokens">Tokens per action</label><input id="c-tokens" type="number" min="0" step="100" value="3000"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-small">Small model, $ per 1M tokens</label><input id="c-small" type="number" min="0" step="0.05" value="0.50"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-large">Large model, $ per 1M tokens</label><input id="c-large" type="number" min="0" step="0.5" value="6.00"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-share">Share of actions on the large model, %</label><input id="c-share" type="number" min="0" max="100" step="5" value="15"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-hours">Staff review hours per week</label><input id="c-hours" type="number" min="0" step="1" value="8"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-rate">Staff cost, $ per hour</label><input id="c-rate" type="number" min="0" step="5" value="45"><span class="tag">assumption, verify before use</span></div>
+          <div class="field"><label for="c-build">One-time build and integration, $</label><input id="c-build" type="number" min="0" step="1000" value="40000"><span class="tag">assumption, verify before use</span></div>
+        </form>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card section">
+          <h2>Result</h2>
+          <div class="big">
+            <div><b id="o-per-student">$0</b><span>run cost per student, per semester</span></div>
+            <div><b id="o-inference">$0</b><span>model cost, whole pilot</span></div>
+            <div><b id="o-staff">$0</b><span>staff review, whole pilot</span></div>
+          </div>
+          <div class="bar" id="o-bar" aria-label="Run cost split"></div>
+          <div class="legend"><span><i style="background:var(--accent)"></i>Model use</span><span><i style="background:var(--c-con)"></i>Staff review</span><span id="o-build-note"></span></div>
+          <p class="lede" id="o-insight"></p>
+          <span class="tag">Result follows from the assumptions above. Not a quote.</span>
+        </div>
+        <div class="card section">
+          <h2>Route each task to the right model</h2>
+          <p class="lede">Routine routing, event matching and summaries run on a small model. Tutoring explanations and sensitive wording run on a large one. This is the cost-optimized model idea from M1.3.</p>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Option</th><th>Gain</th><th>Trade-off</th></tr></thead>
+            <tbody>
+              <tr><td><b>Build</b> a thin orchestrator on campus tools</td><td>Control of data and consent. Fits existing tools.</td><td>Integration work. The university needs an owner.</td></tr>
+              <tr><td><b>Buy</b> a student-success platform</td><td>Faster start. Vendor support.</td><td>Less control of student data. Another app for students.</td></tr>
+            </tbody>
+          </table></div>
+          <span class="tag">Open decision for the group</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE -->
+  <section class="panel" id="panel-governance" role="tabpanel" aria-labelledby="tab-governance">
+    <div class="strip"><div class="strip-title"><span class="eyebrow">Governance · Course M7.1 to M7.4</span><h1>More risk, more human oversight</h1></div></div>
+    <div class="grid2">
+      <div class="card section quad">
+        <h2>Risk vs speed: where each action sits</h2>
+        <svg id="quad" viewBox="0 0 640 470" role="img" aria-label="Risk versus autonomy quadrant for six Compass actions"></svg>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card section">
+          <h2>Tests before rollout</h2>
+          <div class="tests">
+            <div class="test"><span class="r">crisis</span><span>A crisis phrase, in English or Spanish, reaches a human. The fixed rule fires even if the model is down.</span></div>
+            <div class="test"><span class="r">consent</span><span>Sofia turns off family sharing. The next summary does not go out.</span></div>
+            <div class="test"><span class="r">FERPA</span><span>Someone asks the agent for another student's grades. It refuses and logs the request.</span></div>
+            <div class="test"><span class="r">injection</span><span>An event description hides an instruction. The agent ignores it.</span></div>
+            <div class="test"><span class="r">opt-in</span><span>An intro request without both opt-ins does not go out.</span></div>
+            <div class="test"><span class="r">tone</span><span>Wellbeing messages pass a review panel of students and counselors.</span></div>
+          </div>
+        </div>
+        <div class="card section">
+          <h2>Rules that do not bend</h2>
+          <div class="rules"><span>Not clinical. No diagnosis.</span><span>Student owns the data</span><span>Consent before data</span><span>FERPA for course records</span><span>Least data per agent</span><span>Every action logged</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card section" style="margin-top:16px">
+      <h2>Audit log, sample</h2>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Time</th><th>Agent</th><th>Action</th><th>Data read</th><th>Basis</th><th>Outcome</th></tr></thead>
+        <tbody>
+          <tr><td class="num">W1 Mon 18:02</td><td>Activities</td><td>Suggest club</td><td>Events calendar, dorm area</td><td>Consent, onboarding</td><td>Sofia said yes</td></tr>
+          <tr><td class="num">W3 Tue 08:15</td><td>Tutoring</td><td>Offer tutor slot</td><td>Practice score, due dates</td><td>Consent, course data</td><td>Booked Wed 16:00</td></tr>
+          <tr><td class="num">W4 Thu 12:40</td><td>Connections</td><td>Propose intro</td><td>Opt-in profiles</td><td>Both opted in</td><td>Both said yes</td></tr>
+          <tr><td class="num">W5 Wed 21:10</td><td>Resources</td><td>Offer 3 support options</td><td>Joined signals, no message text</td><td>Consent, wellbeing</td><td>Peer mentor chat</td></tr>
+          <tr><td class="num">W6 Mon 09:30</td><td>Connections</td><td>Career fair match</td><td>Career interests</td><td>Consent per firm</td><td>Shared with 2 firms</td></tr>
+        </tbody>
+      </table></div>
+      <span class="tag">Fictional sample rows</span>
+    </div>
+  </section>
+
+  <!-- PILOT -->
+  <section class="panel" id="panel-pilot" role="tabpanel" aria-labelledby="tab-pilot">
+    <div class="strip"><div class="strip-title"><span class="eyebrow">Pilot to practice · Course M6.2 to M6.4</span><h1>One campus, one cohort, one semester</h1></div></div>
+    <div class="facts">
+      <div><b>One university</b><span>A partner campus with an LMS and an events calendar</span></div>
+      <div><b>One cohort</b><span>First-years whose home is more than 50 miles from campus</span></div>
+      <div><b>One semester</b><span>Go or no-go at week 15</span></div>
+    </div>
+    <div class="card section" style="margin-top:16px">
+      <h2>Timeline</h2>
+      <div class="timeline">
+        <div><b>Before term</b>Consent design, integrations, red-team tests</div>
+        <div class="live"><b>Weeks 0 to 6</b>Live with the cohort. Weekly check on KPIs.</div>
+        <div><b>Week 8</b>Belonging survey</div>
+        <div><b>Week 15</b>Review. Go or no-go.</div>
+      </div>
+    </div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="card section">
+        <h2>KPIs</h2>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>KPI</th><th>Type</th><th>Target</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Events attended, weeks 1 to 6</td><td><span class="pill lead">leading</span></td><td class="num">2+ per student</td><td>Opt-in check-ins</td></tr>
+            <tr><td>Tutoring booked before first exam</td><td><span class="pill lead">leading</span></td><td class="num">40% of flagged</td><td>LMS, tutoring center</td></tr>
+            <tr><td>Peer intros accepted</td><td><span class="pill lead">leading</span></td><td class="num">30%</td><td>Compass log</td></tr>
+            <tr><td>Signal to support offer</td><td><span class="pill lead">leading</span></td><td class="num">under 48 h</td><td>Audit log</td></tr>
+            <tr><td>Belonging score, week 8</td><td><span class="pill lag">outcome</span></td><td class="num">+10% vs last cohort</td><td>Survey</td></tr>
+            <tr><td>First-year retention</td><td><span class="pill lag">lagging</span></td><td class="num">+3 pts</td><td>Registrar</td></tr>
+            <tr><td>Opt-out rate</td><td><span class="pill health">health</span></td><td class="num">under 10%</td><td>Compass log</td></tr>
+          </tbody>
+        </table></div>
+        <span class="tag">Targets: assumption, verify before use. Set them with the partner university.</span>
+      </div>
+      <div class="card section">
+        <h2>Why pilots stall, and our answer</h2>
+        <div class="risks">
+          <div><b>Counselors fear more cases</b><span>Only opt-in referrals. Weekly volume shared with them.</span></div>
+          <div><b>Faculty see surveillance</b><span>Read-only course data. No grades leave Compass.</span></div>
+          <div><b>Students ignore one more app</b><span>Messages also reach them by text and the campus app.</span></div>
+          <div><b>No owner after the pilot</b><span>Name an owner in student affairs on day one.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSE -->
+  <section class="panel" id="panel-course" role="tabpanel" aria-labelledby="tab-course">
+    <div class="strip"><div class="strip-title"><span class="eyebrow">Applied Agentic AI for Organizational Transformation</span><h1>Where each course idea shows up</h1></div></div>
+    <div class="card section">
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Prototype element</th><th>Course concept</th><th>See it</th></tr></thead>
+        <tbody id="course-rows"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <footer class="foot"><span>All people, places and firms are fictional. No real student data.</span><span>Compass prototype v0.1.0 · Group 13 · MIT Professional Education</span></footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var HUE = {orch:"var(--c-orch)", act:"var(--c-act)", tut:"var(--c-tut)", con:"var(--c-con)", res:"var(--c-res)"};
+  var AGENT_NAME = {orch:"Compass orchestrator", act:"Activities agent", tut:"Tutoring agent", con:"Connections agent", res:"Resources agent"};
+
+  var STEPS = [
+    {week:0, short:"Onboarding", title:"Goal and consent before any data", agent:"orch", tool:"sso", signals:[], guards:["consent","audit"],
+     edges:["e-student","e-sso"],
+     did:"Records Sofia's goal and her sharing choices.", tool_label:"University sign-in (identity only)",
+     data:"Name, program, home city for the 50-mile check", never:"No course, event or message data until she chooses.",
+     guard:"Consent first. Nothing flows until Sofia chooses.", course:"M7.1 Data privacy", cost:{small:2, large:0},
+     call:"check eligibility"},
+    {week:1, short:"Activities", title:"Belonging starts near the dorm", agent:"act", tool:"events", signals:[], guards:["consent","audit"],
+     edges:["e-student","e-act","e-act-events"],
+     did:"Matches campus events to her interests and her dorm.", tool_label:"University events calendar",
+     data:"Event list, dorm area, interests she shared", never:"No location tracking. Attendance only if she checks in.",
+     guard:"Reads only what she opted into.", course:"M3.1 Agents in existing workflows", cost:{small:3, large:0},
+     call:"find events"},
+    {week:3, short:"Tutoring", title:"Help before the quiz, not after", agent:"tut", tool:"lms", signals:[], guards:["ferpa","audit"],
+     edges:["e-student","e-tut","e-tut-lms"],
+     did:"Sees a low practice score and a quiz Friday. Offers a tutor slot.", tool_label:"LMS (e.g., Canvas), read only",
+     data:"Due dates, practice scores, tutoring center slots", never:"Grades never go to family or advisors.",
+     guard:"FERPA boundary. Course records stay with Sofia.", course:"M3.3 Connecting agents (MCP)", cost:{small:2, large:2},
+     call:"read scores"},
+    {week:4, short:"Connections", title:"An intro both sides agree to", agent:"con", tool:"peers", signals:[], guards:["optin","audit"],
+     edges:["e-student","e-con","e-con-peers"],
+     did:"Finds a classmate with the same home state and major.", tool_label:"Peer directory, opt-in profiles only",
+     data:"Home state, major, opt-in flag", never:"No intro unless Marcus also says yes.",
+     guard:"Both sides opt in.", course:"M2.3 Multi-agent architecture", cost:{small:3, large:0},
+     call:"match peers"},
+    {week:5, short:"Resources", title:"Quiet signals, one gentle offer", agent:"res", tool:"services", signals:["lms","events","family"], guards:["human","crisis","audit"],
+     edges:["e-student","e-res","e-res-services"],
+     did:"The orchestrator joins three quiet signals. Resources offers three options.", tool_label:"Campus counseling and regional services directory",
+     data:"2 missed deadlines, 0 events in 10 days, fewer family check-ins", never:"No diagnosis. Family and university see nothing.",
+     guard:"Crisis words trigger a fixed rule: a human and 988. The model does not decide.", course:"M3.4 Empathy tuning · M7.3 Guardrails", cost:{small:3, large:2},
+     call:"offer support"},
+    {week:6, short:"Recruiting", title:"From campus to career", agent:"con", tool:"career", signals:[], guards:["consent","audit"],
+     edges:["e-student","e-con","e-con-career"],
+     did:"Matches her interests to firms at the career fair.", tool_label:"Career office platform (e.g., Handshake)",
+     data:"Career interests, fair schedule", never:"No profile goes to a firm she did not pick.",
+     guard:"Consent per firm. Sofia shares her own profile.", course:"M5.6 Centralized vs embedded agents", cost:{small:3, large:0},
+     call:"match firms"}
+  ];
+  var WEEKS = STEPS.map(function(s){return s.week;});
+  var TABS = ["flow","cost","governance","pilot","course"];
+
+  function hueStyle(a){return "--hue:"+HUE[a];}
+  function from(a,label){return '<div class="from"><i></i>'+label+'</div>';}
+
+  var STUDENT = {
+    0: function(){return ''+
+      '<div class="msg" style="'+hueStyle("orch")+'">'+from("orch","Compass")+
+        '<p>Welcome, Sofia. First, your goal, in your own words.</p>'+
+        '<div class="goal">"Finish my finance degree, land an internship, and make this place feel like home."</div>'+
+        '<div class="elig">Eligible: home 1,800 mi away. Rule: more than 50 mi.</div></div>'+
+      '<div class="msg" style="'+hueStyle("orch")+'">'+from("orch","You decide who sees what")+
+        '<div class="tog">Weekly summary to my family<span class="sw on"></span></div>'+
+        '<div class="tog">Course data for study help<span class="sw on"></span></div>'+
+        '<div class="tog">Peer intros, ask me each time<span class="sw on"></span></div>'+
+        '<div class="tog">Share with university advisors<span class="sw"></span></div>'+
+        '<div class="acts"><span class="p">Start Compass</span></div></div>';},
+    1: function(){return ''+
+      '<div class="msg" style="'+hueStyle("act")+'">'+from("act","Activities")+
+        '<p>A Latin dance club meets Thursday at 7 PM. It is 6 minutes from your dorm.</p>'+
+        '<p>3 classmates from your accounting section go.</p>'+
+        '<div class="acts"><span class="p">I\'ll go</span><span>Not for me</span></div>'+
+        '<div class="why">Why this: your interests and your dorm area.</div></div>';},
+    3: function(){return ''+
+      '<div class="msg" style="'+hueStyle("tut")+'">'+from("tut","Tutoring")+
+        '<p>Your accounting quiz is Friday. You scored 58% on the practice set.</p>'+
+        '<p>A tutor slot opens Wednesday at 4 PM.</p>'+
+        '<div class="acts"><span class="p">Book Wed 4 PM</span><span>Later</span></div></div>'+
+      '<div class="msg" style="'+hueStyle("tut")+'">'+from("tut","Your plan this week")+
+        '<div class="plan"><b>Mon</b><span>Review chapter 4</span><b>Wed</b><span>Tutor, 4 PM</span><b>Thu</b><span>Practice set 2</span><b>Fri</b><span>Quiz</span></div>'+
+        '<div class="why">Only you see your scores.</div></div>';},
+    4: function(){return ''+
+      '<div class="msg" style="'+hueStyle("con")+'">'+from("con","Connections")+
+        '<div class="person"><div class="avatar" style="'+hueStyle("con")+'">MO</div><div><b>Marcus O.</b><div class="why">Houston, TX · Finance, first year</div></div></div>'+
+        '<p>Marcus is also from Texas and also studies finance. Want an intro?</p>'+
+        '<div class="acts"><span class="p">Yes, intro me</span><span>Not now</span></div>'+
+        '<div class="why">Marcus gets the intro only if he also says yes.</div></div>';},
+    5: function(){return ''+
+      '<div class="msg" style="'+hueStyle("res")+'">'+from("res","Compass")+
+        '<p>Week 5 is hard for many first-years. You do not have to sort it out alone.</p>'+
+        '<div class="opt"><b>Peer mentor chat</b><small>Today, a second-year from Texas</small></div>'+
+        '<div class="opt"><b>Campus counseling</b><small>Free. Book online, this week</small></div>'+
+        '<div class="opt"><b>Community health center</b><small>10 min by bus. Spanish spoken</small></div>'+
+        '<div class="acts"><span class="p">Chat with a mentor</span><span>Not now</span></div></div>'+
+      '<div class="crisis">In crisis? Call or text 988, now.</div>';},
+    6: function(){return ''+
+      '<div class="msg" style="'+hueStyle("con")+'">'+from("con","Connections")+
+        '<p>Career fair Tuesday, 10 AM to 2 PM, Student Center.</p>'+
+        '<p>2 firms there hire first-year finance interns.</p>'+
+        '<div class="opt"><b>Harbor &amp; Pike Capital</b><small>Summer analyst, first-years</small></div>'+
+        '<div class="opt"><b>Meridian Ledger Group</b><small>Finance rotation program</small></div>'+
+        '<div class="acts"><span class="p">Share my profile with both</span><span>Just remind me</span></div>'+
+        '<div class="why">You choose which firm sees your profile.</div></div>';}
+  };
+  var FAMILY = {
+    0:"Sofia joined Compass. She chose to send you a weekly summary.",
+    1:"Sofia found a club near her dorm.",
+    3:"Sofia has a study plan for this week.",
+    4:"Sofia made a new connection on campus.",
+    5:"Sofia is settling in. A call is always welcome.",
+    6:"Sofia plans to visit the career fair."
+  };
+  var FAMILY_PRIVATE = {
+    0:"Sofia can stop this summary at any time.",
+    1:"No location data. Only what Sofia shares.",
+    3:"Grades stay private.",
+    4:"No names of other students.",
+    5:"Wellbeing details stay private. Sofia decides what to share.",
+    6:"Career details stay with Sofia."
+  };
+  function familyFeed(w){
+    var html = '<div class="msg" style="'+hueStyle("orch")+'">'+from("orch","Weekly summary")+
+      '<p>'+FAMILY[w]+'</p>'+
+      '<div class="fam-note">&#128274; <span>'+FAMILY_PRIVATE[w]+'</span></div></div>';
+    var past = WEEKS.filter(function(x){return x<w;}).reverse();
+    past.forEach(function(x){
+      html += '<div class="msg" style="'+hueStyle("orch")+';opacity:.62">'+from("orch","Week "+x)+'<p>'+FAMILY[x]+'</p></div>';
+    });
+    return html;
+  }
+
+  /* ---------- diagram ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  var NODES = [
+    {id:"student", x:16, y:120, w:178, h:66, t:"Sofia's phone", s:"Compass app, text", hue:"orch"},
+    {id:"family", x:16, y:262, w:178, h:66, t:"Family view", s:"summary only", hue:"orch"},
+    {id:"orch", x:236, y:158, w:206, h:132, t:"Compass", s:"orchestrator", hue:"orch", big:true},
+    {id:"act", x:488, y:20, w:184, h:62, t:"Activities", s:"agent", hue:"act"},
+    {id:"tut", x:488, y:104, w:184, h:62, t:"Tutoring", s:"agent", hue:"tut"},
+    {id:"con", x:488, y:188, w:184, h:62, t:"Connections", s:"agent", hue:"con"},
+    {id:"res", x:488, y:272, w:184, h:62, t:"Resources", s:"agent", hue:"res"},
+    {id:"sso", x:236, y:40, w:206, h:52, t:"University sign-in", s:"identity only", hue:"orch"},
+    {id:"events", x:728, y:27, w:256, h:48, t:"Events calendar", s:"campus", hue:"act"},
+    {id:"lms", x:728, y:106, w:256, h:48, t:"LMS (e.g., Canvas)", s:"read only", hue:"tut"},
+    {id:"peers", x:728, y:164, w:256, h:48, t:"Peer directory", s:"opt-in profiles", hue:"con"},
+    {id:"career", x:728, y:220, w:256, h:48, t:"Career office (e.g., Handshake)", s:"", hue:"con"},
+    {id:"services", x:728, y:280, w:256, h:48, t:"Counseling and services", s:"campus + regional", hue:"res"}
+  ];
+  var GUARDS = [
+    {id:"consent", t:"Student consent"}, {id:"ferpa", t:"FERPA boundary"}, {id:"optin", t:"Both-sides opt-in"},
+    {id:"human", t:"Human in the loop"}, {id:"crisis", t:"Fixed crisis rule", crit:true}, {id:"audit", t:"Audit log"}
+  ];
+  function nodeById(id){for(var i=0;i<NODES.length;i++){if(NODES[i].id===id)return NODES[i];}return null;}
+  function R(n){return {x:n.x+n.w, y:n.y+n.h/2};}
+  function L(n){return {x:n.x, y:n.y+n.h/2};}
+  function curve(a,b){var mx=(a.x+b.x)/2;return "M"+a.x+","+a.y+" C"+mx+","+a.y+" "+mx+","+b.y+" "+b.x+","+b.y;}
+  var EDGES = [
+    {id:"e-student", from:"student", to:"orch", hue:"orch"},
+    {id:"e-family", from:"family", to:"orch", hue:"orch"},
+    {id:"e-sso", from:"orch", to:"sso", hue:"orch", over:true},
+    {id:"e-act", from:"orch", to:"act", hue:"act"},
+    {id:"e-tut", from:"orch", to:"tut", hue:"tut"},
+    {id:"e-con", from:"orch", to:"con", hue:"con"},
+    {id:"e-res", from:"orch", to:"res", hue:"res"},
+    {id:"e-act-events", from:"act", to:"events", hue:"act"},
+    {id:"e-tut-lms", from:"tut", to:"lms", hue:"tut"},
+    {id:"e-con-peers", from:"con", to:"peers", hue:"con"},
+    {id:"e-con-career", from:"con", to:"career", hue:"con"},
+    {id:"e-res-services", from:"res", to:"services", hue:"res"}
+  ];
+  function el(tag, attrs, parent){var e=document.createElementNS(NS,tag);for(var k in attrs){e.setAttribute(k,attrs[k]);}if(parent)parent.appendChild(e);return e;}
+  function buildDiagram(){
+    var svg = document.getElementById("diagram");
+    el("text",{x:16,y:100,class:"dg-label"},svg).textContent="PEOPLE";
+    el("text",{x:236,y:28,class:"dg-label"},svg).textContent="ORCHESTRATION";
+    el("text",{x:728,y:12,class:"dg-label"},svg).textContent="CAMPUS TOOLS";
+    el("text",{x:488,y:12,class:"dg-label"},svg).textContent="AGENTS";
+    var gEdges = el("g",{},svg);
+    EDGES.forEach(function(e){
+      var a=nodeById(e.from), b=nodeById(e.to), d;
+      if(e.from==="family"){ d = curve(R(a), {x:b.x, y:b.y+b.h-24}); }
+      else if(e.from==="student"){ d = curve(R(a), {x:b.x, y:b.y+26}); }
+      else if(e.over){ d = "M"+(a.x+a.w/2)+","+a.y+" L"+(b.x+b.w/2)+","+(b.y+b.h); }
+      else { d = curve(R(a), L(b)); }
+      el("path",{d:d,class:"dg-edge",id:e.id,style:hueStyle(e.hue)},gEdges);
+    });
+    var gNodes = el("g",{},svg);
+    NODES.forEach(function(n){
+      var g = el("g",{class:"dg-node",id:"n-"+n.id,style:hueStyle(n.hue)},gNodes);
+      el("rect",{x:n.x,y:n.y,width:n.w,height:n.h,rx:12},g);
+      el("circle",{cx:n.x+16,cy:n.y+(n.big?28:n.h/2- (n.s?8:0)),r:5,class:"dot"},g);
+      if(n.big){
+        var t=el("text",{x:n.x+30,y:n.y+34},g); t.textContent=n.t; t.setAttribute("style","font-size:20px;font-family:var(--f-display)");
+        var s=el("text",{x:n.x+30,y:n.y+56,class:"sub"},g); s.textContent=n.s;
+        var c=el("text",{x:n.x+16,y:n.y+92,class:"sub",id:"orch-note"},g); c.textContent="routes, remembers the goal";
+        var c2=el("text",{x:n.x+16,y:n.y+112,class:"sub",id:"orch-note2"},g); c2.textContent="";
+      } else {
+        var t2=el("text",{x:n.x+30,y:n.y+(n.s? n.h/2-3 : n.h/2+5)},g); t2.textContent=n.t;
+        if(n.s){var s2=el("text",{x:n.x+30,y:n.y+n.h/2+15,class:"sub"},g); s2.textContent=n.s;}
+      }
+    });
+    el("rect",{x:8,y:346,width:984,height:92,rx:14,class:"dg-band"},svg);
+    el("text",{x:24,y:368,class:"dg-label"},svg).textContent="GUARDRAILS · ON EVERY ACTION";
+    var gw=150, gap=10, x0=24;
+    GUARDS.forEach(function(gd,i){
+      var g = el("g",{class:"dg-guard"+(gd.crit?" crit":""),id:"g-"+gd.id},svg);
+      var x = x0 + i*(gw+gap);
+      el("rect",{x:x,y:380,width:gw,height:44,rx:10},g);
+      var t=el("text",{x:x+gw/2,y:407,"text-anchor":"middle"},g); t.textContent=gd.t;
+    });
+  }
+  function paintDiagram(step, family){
+    var actNodes = {student:!family, family:family, orch:true};
+    actNodes[step.agent]=true; actNodes[step.tool]=true;
+    if(family){ actNodes = {family:true, orch:true}; }
+    NODES.forEach(function(n){
+      var g=document.getElementById("n-"+n.id);
+      var cls="dg-node";
+      if(actNodes[n.id]) cls+=" act";
+      else if(!family && step.signals.indexOf(n.id)>=0) cls+=" sig";
+      else cls+=" dim";
+      if(n.id==="orch" && !family && step.agent!=="orch") cls = "dg-node act";
+      g.setAttribute("class",cls);
+    });
+    var actEdges = family ? ["e-family"] : step.edges;
+    EDGES.forEach(function(e){
+      document.getElementById(e.id).setAttribute("class","dg-edge"+(actEdges.indexOf(e.id)>=0?" act":""));
+    });
+    var guards = family ? ["consent","audit"] : step.guards;
+    GUARDS.forEach(function(gd){
+      document.getElementById("g-"+gd.id).setAttribute("class","dg-guard"+(gd.crit?" crit":"")+(guards.indexOf(gd.id)>=0?" act":""));
+    });
+    var n1=document.getElementById("orch-note"), n2=document.getElementById("orch-note2");
+    if(!family && step.week===5){ n1.textContent="joins 3 quiet signals:"; n2.textContent="LMS, events, family"; }
+    else if(family){ n1.textContent="sends what Sofia allows"; n2.textContent="nothing else"; }
+    else { n1.textContent="routes, keeps the goal"; n2.textContent="now: "+step.call; }
+  }
+
+  /* ---------- cost ---------- */
+  var USD = new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0});
+  var USD2 = new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:2,maximumFractionDigits:2});
+  var USD4 = new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:3,maximumFractionDigits:4});
+  function num(id){var v=parseFloat(document.getElementById(id).value);return isFinite(v)&&v>=0?v:0;}
+  function costInputs(){return {S:num("c-students"),W:num("c-weeks"),A:num("c-actions"),T:num("c-tokens"),ps:num("c-small"),pl:num("c-large"),L:Math.min(num("c-share"),100)/100,H:num("c-hours"),R:num("c-rate"),B:num("c-build")};}
+  function renderCost(){
+    var c=costInputs();
+    var tokPerStudent=c.A*c.T*c.W;
+    var blend=(1-c.L)*c.ps + c.L*c.pl;
+    var infer=tokPerStudent/1e6*blend*c.S;
+    var staff=c.H*c.R*c.W;
+    var per=c.S>0?(infer+staff)/c.S:0;
+    document.getElementById("o-per-student").textContent=USD2.format(per);
+    document.getElementById("o-inference").textContent=USD.format(infer);
+    document.getElementById("o-staff").textContent=USD.format(staff);
+    var tot=infer+staff, bar=document.getElementById("o-bar");
+    var pi=tot>0?infer/tot*100:0;
+    bar.innerHTML='<div style="width:'+pi.toFixed(2)+'%;background:var(--accent)"></div><div style="width:'+(100-pi).toFixed(2)+'%;background:var(--c-con)"></div>';
+    document.getElementById("o-build-note").textContent="One-time build, not in the bar: "+USD.format(c.B);
+    var msg = staff>infer ? "With these inputs, staff time costs more than the models. Model price is not the main lever."
+                          : "With these inputs, model use costs more than staff time. Routing more work to the small model is the main lever.";
+    document.getElementById("o-insight").textContent=msg;
+    return c;
+  }
+  function stepCost(step){
+    var c=costInputs();
+    return (step.cost.small*c.ps + step.cost.large*c.pl)*c.T/1e6;
+  }
+
+  /* ---------- quadrant ---------- */
+  function buildQuad(){
+    var svg=document.getElementById("quad");
+    var X0=70,Y0=40,W=540,H=360;
+    el("rect",{x:X0,y:Y0,width:W,height:H,fill:"none",stroke:"none"},svg);
+    el("line",{x1:X0+W/2,y1:Y0,x2:X0+W/2,y2:Y0+H,class:"q-grid"},svg);
+    el("line",{x1:X0,y1:Y0+H/2,x2:X0+W,y2:Y0+H/2,class:"q-grid"},svg);
+    el("line",{x1:X0,y1:Y0+H,x2:X0+W,y2:Y0+H,class:"q-axis"},svg);
+    el("line",{x1:X0,y1:Y0,x2:X0,y2:Y0+H,class:"q-axis"},svg);
+    var z=[["HUMAN DECIDES",X0+10,Y0+20],["HUMAN IN THE LOOP",X0+W/2+10,Y0+20],["HUMAN APPROVES",X0+10,Y0+H-12],["AUTOMATE",X0+W/2+10,Y0+H-12]];
+    z.forEach(function(q){el("text",{x:q[1],y:q[2],class:"q-zone"},svg).textContent=q[0];});
+    el("text",{x:X0,y:Y0+H+30,class:"q-ax"},svg).textContent="Human decides";
+    el("text",{x:X0+W,y:Y0+H+30,class:"q-ax","text-anchor":"end"},svg).textContent="Fully automatic →";
+    var ty=el("text",{x:22,y:Y0+H,class:"q-ax",transform:"rotate(-90 22 "+(Y0+H)+")"},svg); ty.textContent="Risk to the student →";
+    var P=[
+      {t:"Event suggestions",s:"consent",x:.9,y:.12,a:"act",side:"l"},
+      {t:"Tutoring nudges",s:"FERPA data",x:.8,y:.3,a:"tut",side:"l"},
+      {t:"Family summary",s:"consent, summary only",x:.72,y:.40,a:"orch",side:"l"},
+      {t:"Peer intros",s:"both-sides opt-in",x:.42,y:.58,a:"con",side:"r"},
+      {t:"Career profile share",s:"consent per firm",x:.30,y:.68,a:"con",side:"r"},
+      {t:"Wellbeing support",s:"human in the loop",x:.66,y:.80,a:"res",side:"r"}
+    ];
+    P.forEach(function(p){
+      var cx=X0+p.x*W, cy=Y0+H-p.y*H;
+      el("circle",{cx:cx,cy:cy,r:8,style:"fill:"+HUE[p.a]},svg);
+      var anchor=p.side==="l"?"end":"start", dx=p.side==="l"?-14:14;
+      el("text",{x:cx+dx,y:cy-2,class:"q-lbl","text-anchor":anchor},svg).textContent=p.t;
+      el("text",{x:cx+dx,y:cy+15,class:"q-sub","text-anchor":anchor},svg).textContent=p.s;
+    });
+    // crisis path: wellbeing high risk, human decides
+    var hx=X0+.08*W, hy=Y0+H-.82*H;
+    el("circle",{cx:hx,cy:hy,r:8,style:"fill:var(--critical)"},svg);
+    el("text",{x:hx+14,y:hy-2,class:"q-lbl"},svg).textContent="Crisis words";
+    el("text",{x:hx+14,y:hy+15,class:"q-sub"},svg).textContent="fixed rule → human, 988";
+  }
+
+  /* ---------- course tab ---------- */
+  var COURSE = [
+    ["Orchestrator plus 4 specialist agents","M2.3 Single vs multi-agent architectures",{tab:"flow",week:4}],
+    ["Agents work inside campus tools (LMS, events calendar)","M3.1 Building agents into existing workflows · M3.3 MCP",{tab:"flow",week:3}],
+    ["Wording of the week 5 message","M3.4 Empathy and response tuning",{tab:"flow",week:5}],
+    ["Central orchestrator, agents embedded in campus tools","M5.6 Centralized vs embedded agents",{tab:"flow",week:6}],
+    ["Consent before any data","M7.1 Regulatory frameworks for data privacy",{tab:"flow",week:0}],
+    ["Cost calculator and model routing","M1.3 Cost-optimized models and trade-offs",{tab:"cost"}],
+    ["Risk quadrant, tests, audit log","M7.2 Testing · M7.3 Speed vs oversight · M7.4 Documentation",{tab:"governance"}],
+    ["KPIs, pilot, last-mile risks","M6.2 Last-mile integration · M6.3 Change management · M6.4 Monitoring",{tab:"pilot"}]
+  ];
+  function buildCourse(){
+    var tb=document.getElementById("course-rows");
+    COURSE.forEach(function(r,i){
+      var tr=document.createElement("tr");
+      tr.innerHTML='<td>'+r[0]+'</td><td>'+r[1]+'</td><td><button type="button" class="jump" id="jump-'+i+'">Open</button></td>';
+      tb.appendChild(tr);
+      tr.querySelector("button").addEventListener("click",function(){go(r[2]);});
+    });
+  }
+
+  /* ---------- state ---------- */
+  var state={week:0, tab:"flow", family:false};
+  function stepFor(w){for(var i=0;i<STEPS.length;i++){if(STEPS[i].week===w)return STEPS[i];}return null;}
+
+  function renderWeeks(){
+    var box=document.getElementById("weeks"); box.innerHTML="";
+    STEPS.forEach(function(s){
+      var b=document.createElement("button"); b.type="button"; b.className="wk"; b.id="wk-"+s.week;
+      b.setAttribute("style",hueStyle(s.agent));
+      b.setAttribute("aria-current", s.week===state.week?"true":"false");
+      b.innerHTML='<span class="n">WEEK '+s.week+'</span><span class="l">'+s.short+'</span>';
+      b.addEventListener("click",function(){go({week:s.week});});
+      box.appendChild(b);
+    });
+  }
+  function renderFlow(){
+    var s=stepFor(state.week), fam=state.family;
+    document.getElementById("wk-eyebrow").textContent="Week "+s.week+" · "+(fam?"Family view":AGENT_NAME[s.agent]);
+    document.getElementById("wk-title").textContent=fam?"Reassurance, with consent":s.title;
+    document.getElementById("left-title").textContent=fam?"What her family sees":"What Sofia sees";
+    document.getElementById("view-student").setAttribute("aria-pressed",String(!fam));
+    document.getElementById("view-family").setAttribute("aria-pressed",String(fam));
+    document.getElementById("app-t").textContent=fam?"Compass Family":"Compass";
+    document.getElementById("app-s").textContent=fam?"Sofia's weekly summary":"Larkfield University";
+    document.getElementById("feed").innerHTML = fam ? familyFeed(s.week) : STUDENT[s.week]();
+    document.getElementById("phone-cap").textContent = fam
+      ? "Her parents in El Paso see only what Sofia allows."
+      : "Sofia, 18. Home in El Paso, TX. College 1,800 miles away.";
+    var i=WEEKS.indexOf(s.week);
+    document.getElementById("prev").disabled = i<=0;
+    document.getElementById("next").disabled = i>=WEEKS.length-1;
+    paintDiagram(s,fam);
+    var log=document.getElementById("log"), cost=stepCost(s);
+    if(fam){
+      log.innerHTML='<div class="log-head"><span class="agent-chip" style="'+hueStyle("orch")+'"><i></i>Compass orchestrator</span><h3>Family summary, week '+s.week+'</h3></div>'+
+        kv("What it did","Sends one short summary that Sofia approved.")+
+        kv("Data shared",FAMILY[s.week])+
+        kv("Never shared","Grades, messages, wellbeing details, locations.")+
+        kv("Guardrail","Student consent. Sofia can stop it any time.","guard")+
+        kv("Course link",'<span class="course-tag">M7.1 Data privacy</span>')+
+        kv("Model cost, this step",'<span class="cost-line">'+USD4.format(costInputs().ps*costInputs().T/1e6)+'</span> <span class="tag">estimate from Cost tab assumptions</span>');
+    } else {
+      log.innerHTML='<div class="log-head"><span class="agent-chip" style="'+hueStyle(s.agent)+'"><i></i>'+AGENT_NAME[s.agent]+'</span><h3>'+s.did+'</h3></div>'+
+        kv("Tool it connects to",s.tool_label)+
+        kv("Data it reads",s.data)+
+        kv("What never happens",s.never)+
+        kv("Guardrail",s.guard,"guard")+
+        kv("Course link",'<span class="course-tag">'+s.course+'</span>')+
+        kv("Model cost, this step",'<span class="cost-line">'+USD4.format(cost)+'</span> <span class="tag">estimate from Cost tab assumptions</span>');
+    }
+  }
+  function kv(k,v,cls){return '<div class="kv'+(cls?" "+cls:"")+'"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';}
+
+  function render(){
+    TABS.forEach(function(t){
+      document.getElementById("panel-"+t).classList.toggle("on",t===state.tab);
+      var b=document.getElementById("tab-"+t); b.setAttribute("aria-selected",String(t===state.tab)); b.tabIndex = t===state.tab?0:-1;
+    });
+    renderWeeks();
+    renderFlow();
+    renderCost();
+    document.documentElement.dataset.week=String(state.week);
+    document.documentElement.dataset.tab=state.tab;
+    document.documentElement.dataset.family=state.family?"1":"0";
+  }
+  function writeHash(){
+    var h="week="+state.week+"&tab="+state.tab+"&family="+(state.family?1:0);
+    var th=document.documentElement.getAttribute("data-theme"); if(th) h+="&theme="+th;
+    try{history.replaceState(null,"","#"+h);}catch(e){}
+  }
+  function go(p){
+    p=p||{};
+    if(p.week!==undefined){
+      var w=parseInt(p.week,10);
+      if(WEEKS.indexOf(w)<0) throw new Error("compass.go: week must be one of "+WEEKS.join(", ")+"; got "+p.week);
+      state.week=w;
+    }
+    if(p.tab!==undefined){
+      if(TABS.indexOf(p.tab)<0) throw new Error("compass.go: tab must be one of "+TABS.join(", ")+"; got "+p.tab);
+      state.tab=p.tab;
+    }
+    if(p.family!==undefined) state.family = p.family===true||p.family===1||p.family==="1"||p.family==="true";
+    if(p.theme!==undefined){
+      if(p.theme==="light"||p.theme==="dark") document.documentElement.setAttribute("data-theme",p.theme);
+      else if(p.theme==="system"||p.theme===null) document.documentElement.removeAttribute("data-theme");
+      else throw new Error("compass.go: theme must be light, dark or system; got "+p.theme);
+    }
+    render(); writeHash();
+    return snapshot();
+  }
+  function snapshot(){
+    var s=stepFor(state.week);
+    return {week:state.week, tab:state.tab, family:state.family, theme:document.documentElement.getAttribute("data-theme")||"system",
+      agent:state.family?"orch":s.agent, tool:state.family?"family":s.tool, guards:state.family?["consent","audit"]:s.guards.slice(), signals:state.family?[]:s.signals.slice()};
+  }
+  function parseHash(){
+    var h=(location.hash||"").replace(/^#/,""); var p={};
+    if(!h) return p;
+    if(h.indexOf("=")>=0){
+      h.split("&").forEach(function(kv){var a=kv.split("=");var k=decodeURIComponent(a[0]),v=decodeURIComponent(a[1]||"");
+        if(k==="week")p.week=v; else if(k==="tab")p.tab=v; else if(k==="family")p.family=v; else if(k==="theme")p.theme=v;});
+    } else {
+      h.split("_").forEach(function(tok){
+        var m=/^w(\d)$/.exec(tok);
+        if(m) p.week=m[1]; else if(TABS.indexOf(tok)>=0) p.tab=tok; else if(tok==="family") p.family=true;
+        else if(tok==="light"||tok==="dark") p.theme=tok;
+      });
+    }
+    return p;
+  }
+  function fromHash(){
+    try{ go(parseHash()); }
+    catch(e){ console.warn(String(e.message||e)); go({}); }
+  }
+
+  /* ---------- wire up ---------- */
+  if(/[?&]capture=1\b/.test(location.search)) document.documentElement.classList.add("capture");
+  buildDiagram(); buildQuad(); buildCourse();
+  TABS.forEach(function(t){document.getElementById("tab-"+t).addEventListener("click",function(){go({tab:t});});});
+  document.getElementById("prev").addEventListener("click",function(){var i=WEEKS.indexOf(state.week);if(i>0)go({week:WEEKS[i-1]});});
+  document.getElementById("next").addEventListener("click",function(){var i=WEEKS.indexOf(state.week);if(i<WEEKS.length-1)go({week:WEEKS[i+1]});});
+  document.getElementById("view-student").addEventListener("click",function(){go({family:false});});
+  document.getElementById("view-family").addEventListener("click",function(){go({family:true});});
+  document.getElementById("theme-btn").addEventListener("click",function(){
+    var root=document.documentElement, cur=root.getAttribute("data-theme");
+    var dark = cur ? cur==="dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    go({theme: dark?"light":"dark"});
+  });
+  document.getElementById("cost-form").addEventListener("input",function(){renderCost(); if(state.tab==="flow") renderFlow();});
+  document.addEventListener("keydown",function(e){
+    if(state.tab!=="flow"||e.target.tagName==="INPUT")return;
+    if(e.key==="ArrowRight")document.getElementById("next").click();
+    if(e.key==="ArrowLeft")document.getElementById("prev").click();
+  });
+  window.addEventListener("hashchange",fromHash);
+
+  window.compass = {go:go, state:snapshot, weeks:WEEKS.slice(), tabs:TABS.slice(),
+    steps:STEPS.map(function(s){return {week:s.week, label:s.short, title:s.title, agent:s.agent, agentName:AGENT_NAME[s.agent], tool:s.tool, toolLabel:s.tool_label, guards:s.guards.slice(), signals:s.signals.slice(), guardrail:s.guard, course:s.course};})};
+
+  fromHash();
+  var ready=function(){document.documentElement.dataset.ready="1";};
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(ready,ready);} else ready();
+})();
+</script>
+
+</body>
+</html>
