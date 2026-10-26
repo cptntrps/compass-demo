@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Group 13 · Transform Your Solution · Compass</title>
+<meta name="description" content="Group 13, MIT Professional Education, Impact Project Step 3: Compass, one student and four agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#24151D;overflow:hidden;font-family:'Source Sans 3',Arial,sans-serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+section{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;visibility:hidden;opacity:0;transition:opacity .35s}
+section.on{visibility:visible;opacity:1}
+section h1,section h2,section h3,section p{margin:0}
+section h1{font-size:96px;font-weight:600;line-height:1.1} section h2{font-size:64px;font-weight:600;line-height:1.15}
+section h3{font-size:44px;font-weight:600;line-height:1.2} section p{font-size:32px;line-height:1.4}
+section div{display:flex;flex-direction:column}
+section a{color:inherit}
+.conn{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;pointer-events:none}
+video{display:block;background:#1F1A1D}
+section.on [data-build-in]{animation:build .6s ease-out both}
+@keyframes build{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#nav{position:fixed;right:16px;bottom:12px;display:flex;gap:8px;align-items:center;font:600 14px/1 'Source Sans 3',Arial,sans-serif;color:#EBDCE3}
+#nav button{background:#5C1F3D;color:#FBFAF9;border:0;border-radius:6px;padding:8px 12px;font:inherit;cursor:pointer}
+@media (prefers-reduced-motion:reduce){section{transition:none} section.on [data-build-in]{animation:none}}
+</style></head>
+<body>
+<div id="stage">
+<section data-transition="fade" id="cover" style="background:#FBFAF9;color:#1F1A1D;font-family:'Source Sans 3', Arial, sans-serif;padding:128px;display:flex;flex-direction:column">
+<div style="position:absolute;left:0px;top:0px;width:1920px;height:360px;background:#5C1F3D"></div>
+<p style="position:absolute;left:128px;top:96px;width:1300px;font-family:'Manrope', Arial, sans-serif;font-size:34px;font-weight:800;letter-spacing:5px;color:#FBFAF9">MIT PROFESSIONAL EDUCATION</p>
+<p style="position:absolute;left:128px;top:152px;width:1300px;font-size:28px;color:#EBDCE3">Professional Certificate Program</p>
+<h1 style="position:absolute;left:128px;top:196px;width:1300px;font-family:'Manrope', Arial, sans-serif;font-size:48px;font-weight:700;line-height:1.1;color:#FBFAF9">Digital Transformation in the AI Age</h1>
+<img alt="Compass logo" src="media/logo-white.png" style="position:absolute;left:1632px;top:100px;width:160px;height:160px;object-fit:contain"/>
+<p style="position:absolute;left:128px;top:452px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#A62B6B">Impact Project · 3. Transform Your Solution With Digital Technologies</p>
+<div style="position:absolute;left:128px;top:508px;width:120px;height:4px;background:#5C1F3D"></div>
+<h2 style="position:absolute;left:128px;top:544px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:72px;font-weight:800;line-height:1.1;color:#5C1F3D">One Student. Four Agents.<br/>Endless Possibilities.</h2>
+<p style="position:absolute;left:128px;top:722px;width:1664px;font-size:32px;color:#4E474B"><span style="color:#9A4F12">Activities</span> · <span style="color:#2F4A8F">Tutoring</span> · <span style="color:#77308A">Connections</span> · <span style="color:#1F6B5B">Resources</span></p>
+<p style="position:absolute;left:128px;top:800px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:32px;font-weight:800;color:#5C1F3D">By Group 13</p>
+<p style="position:absolute;left:128px;top:846px;width:1664px;font-size:28px;color:#1F1A1D">Julia Yih · Guilherme Vieira · Jose Torrealba · Shacey Temperly</p>
+<p style="position:absolute;left:128px;top:888px;width:1664px;font-size:24px;color:#6B6470">November 2026</p>
+
+</section>
+<section data-transition="fade" id="compass" style="background:#FBFAF9;color:#1F1A1D;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column">
+<div style="position:absolute;left:0px;top:0px;width:1920px;height:344px;background:#5C1F3D"></div>
+<h1 style="position:absolute;left:128px;top:80px;width:1000px;font-family:'Manrope', Arial, sans-serif;font-size:120px;font-weight:800;letter-spacing:8px;line-height:1;color:#FBFAF9">COMPASS</h1>
+<p style="position:absolute;left:128px;top:224px;width:1300px;font-size:34px;color:#EBDCE3">Four agents, one student-centered companion</p>
+<img alt="Compass logo" src="media/logo-white.png" style="position:absolute;left:1616px;top:96px;width:152px;height:152px;object-fit:contain"/>
+<p style="position:absolute;left:128px;top:392px;width:1664px;font-size:32px;color:#1F1A1D">AI helps students find relevant support, local opportunities and belonging.</p>
+<div style="position:absolute;left:128px;top:468px;width:1664px;display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:20px 0px 0px 0px;border-top:6px solid #9A4F12">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:2px;color:#9A4F12">01 · ACTIVITIES</h3>
+<p style="font-size:26px;line-height:1.35">Discover arts, singing and cultural events</p>
+<p style="font-size:26px;line-height:1.35">Explore clubs and campus activities</p>
+<p style="font-size:26px;line-height:1.35">Filter by interest, date and distance</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:20px 0px 0px 0px;border-top:6px solid #2F4A8F">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:2px;color:#2F4A8F">02 · TUTORING</h3>
+<p style="font-size:26px;line-height:1.35">Find help in finance, accounting and pharmacy</p>
+<p style="font-size:26px;line-height:1.35">Match with tutors, study groups or services</p>
+<p style="font-size:26px;line-height:1.35">Compare subject, format and availability</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:20px 0px 0px 0px;border-top:6px solid #77308A">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:2px;color:#77308A">03 · CONNECTIONS</h3>
+<p style="font-size:26px;line-height:1.35">Discover peers, mentors and alumni</p>
+<p style="font-size:26px;line-height:1.35">Find interest-based groups and networks</p>
+<p style="font-size:26px;line-height:1.35">Explore career and networking events</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;padding:20px 0px 0px 0px;border-top:6px solid #1F6B5B">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:2px;color:#1F6B5B">04 · RESOURCES</h3>
+<p style="font-size:26px;line-height:1.35">Find mental-health and student services</p>
+<p style="font-size:26px;line-height:1.35">Locate screenings and contraception information</p>
+<p style="font-size:26px;line-height:1.35">Discover recruiting and community opportunities</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;top:816px;width:1664px;padding:20px 32px;background:#F2EDEF;font-family:'Manrope', Arial, sans-serif;font-size:28px;font-weight:700;text-align:center;color:#5C1F3D">Belonging by design · Student choice · Human connection first</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between;gap:48px">
+<p style="font-size:24px;color:#6B6470">Group 13 · Content: Step 3 draft v5 (J. Yih, 2026-10-19) · Course link: M2.3 single vs multi-agent architectures</p>
+<p style="font-size:24px;color:#6B6470">2</p>
+</div>
+
+</section>
+<section data-transition="fade" id="idea" style="background:#FBFAF9;color:#1F1A1D;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:92px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#A62B6B">The idea in 92 seconds</p>
+<h2 style="position:absolute;left:128px;top:132px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:54px;font-weight:800;line-height:1.1;text-transform:uppercase;color:#5C1F3D">Sofia’s first six weeks</h2>
+<div style="position:absolute;left:0px;top:224px;width:1920px;height:3px;background:#5C1F3D"></div>
+<video aria-label="Compass idea film: Sofia’s first six weeks with four agents, 92 seconds" class="film" controls="" playsinline="" poster="media/idea-still.jpg" preload="metadata" src="../compass-video.mp4" style="position:absolute;left:128px;top:272px;width:1152px;height:648px;object-fit:cover"></video>
+<div style="position:absolute;left:1328px;top:272px;width:464px;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:0px 0px 16px 0px;border-bottom:2px solid #E2DDE0">WHAT YOU SEE</h3>
+<p style="font-size:28px;line-height:1.3">Sofia’s phone, week by week.</p>
+<p style="font-size:28px;line-height:1.3">The agent that acts.</p>
+<p style="font-size:28px;line-height:1.3">The campus tool it uses.</p>
+<p style="font-size:28px;line-height:1.3">The guardrail on each step.</p>
+</div>
+<div style="position:absolute;left:1328px;top:752px;width:464px;display:flex;flex-direction:column;gap:12px;padding:28px;background:#F2EDEF">
+<p style="font-size:26px;color:#4E474B">Click the film to play it, with sound.</p>
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:700;color:#A62B6B"><a href="https://cptntrps.github.io/compass-demo/compass-video.mp4" rel="noopener" target="_blank">Watch online</a></p>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between;gap:48px">
+<p style="font-size:24px;color:#6B6470">Group 13 · All people, places and data are fictional. Film built from the Compass prototype v0.2.0.</p>
+<p style="font-size:24px;color:#6B6470">3</p>
+</div>
+
+</section>
+<section data-transition="fade" id="agentic" style="background:#FBFAF9;color:#1F1A1D;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:92px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#A62B6B">Agentic AI in practice</p>
+<h2 style="position:absolute;left:128px;top:132px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:54px;font-weight:800;line-height:1.1;text-transform:uppercase;color:#5C1F3D">One need → the right agent → a next step</h2>
+<div style="position:absolute;left:0px;top:224px;width:1920px;height:3px;background:#5C1F3D"></div>
+<div class="shape" data-build-in="fade 1 auto" style="position:absolute;left:160px;top:480px;width:220px;height:220px;background:#FBFAF9;border:4px solid #5C1F3D;border-radius:50%"></div>
+<p data-build-in="fade 1 auto" style="position:absolute;left:160px;top:546px;width:220px;font-family:'Manrope', Arial, sans-serif;font-size:32px;font-weight:800;text-align:center;color:#5C1F3D">STUDENT</p>
+<p data-build-in="fade 1 auto" style="position:absolute;left:160px;top:594px;width:220px;font-size:24px;line-height:1.2;text-align:center;color:#4E474B">her need,<br/>her words</p>
+<svg aria-hidden="true" class="conn" data-build-in="fade 2 auto" viewbox="0 0 1920 1080"><defs><marker id="m96298359" markerheight="5" markerwidth="5" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="#5C1F3D"></path></marker></defs><line marker-end="url(#m96298359)" stroke="#5C1F3D" stroke-width="3" x1="382" x2="476" y1="590" y2="590"></line></svg>
+<div class="shape" data-build-in="fade 2 auto" style="position:absolute;left:480px;top:510px;width:160px;height:160px;background:#FBFAF9;border:4px solid #A62B6B;border-radius:50%"></div>
+<p data-build-in="fade 2 auto" style="position:absolute;left:480px;top:558px;width:160px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;text-align:center;color:#A62B6B">COMPASS</p>
+<p data-build-in="fade 2 auto" style="position:absolute;left:480px;top:594px;width:160px;font-size:24px;text-align:center;color:#A62B6B">orchestrator</p>
+<p data-build-in="fade 2 auto" style="position:absolute;left:430px;top:690px;width:260px;font-size:24px;line-height:1.2;text-align:center;color:#A62B6B">routes each request</p>
+<svg aria-hidden="true" class="conn" data-build-in="fade 3 auto" viewbox="0 0 1920 1080"><defs><marker id="m40898723" markerheight="5" markerwidth="5" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="#9A4F12"></path></marker></defs><line marker-end="url(#m40898723)" stroke="#9A4F12" stroke-width="2" x1="640" x2="818" y1="590" y2="340"></line></svg>
+<div class="shape" data-build-in="fade 3 auto" style="position:absolute;left:820px;top:266px;width:148px;height:148px;background:#FBFAF9;border:3px solid #9A4F12;border-radius:50%"></div>
+<svg aria-hidden="true" data-build-in="fade 3 auto" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="position:absolute;left:866px;top:312px;width:56px;height:56px;color:#9A4F12" viewbox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+<p data-build-in="fade 3 auto" style="position:absolute;left:992px;top:302px;width:240px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#9A4F12">ACTIVITIES</p>
+<p data-build-in="fade 3 auto" style="position:absolute;left:992px;top:342px;width:240px;font-size:26px;color:#4E474B">Find community</p>
+<svg aria-hidden="true" class="conn" data-build-in="fade 4 auto" viewbox="0 0 1920 1080"><defs><marker id="m88605124" markerheight="5" markerwidth="5" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="#2F4A8F"></path></marker></defs><line marker-end="url(#m88605124)" stroke="#2F4A8F" stroke-width="2" x1="640" x2="818" y1="590" y2="503"></line></svg>
+<div class="shape" data-build-in="fade 4 auto" style="position:absolute;left:820px;top:429px;width:148px;height:148px;background:#FBFAF9;border:3px solid #2F4A8F;border-radius:50%"></div>
+<svg aria-hidden="true" data-build-in="fade 4 auto" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="position:absolute;left:866px;top:475px;width:56px;height:56px;color:#2F4A8F" viewbox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+<p data-build-in="fade 4 auto" style="position:absolute;left:992px;top:465px;width:240px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#2F4A8F">TUTORING</p>
+<p data-build-in="fade 4 auto" style="position:absolute;left:992px;top:505px;width:240px;font-size:26px;color:#4E474B">Get course support</p>
+<svg aria-hidden="true" class="conn" data-build-in="fade 5 auto" viewbox="0 0 1920 1080"><defs><marker id="m49157570" markerheight="5" markerwidth="5" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="#77308A"></path></marker></defs><line marker-end="url(#m49157570)" stroke="#77308A" stroke-width="2" x1="640" x2="818" y1="590" y2="667"></line></svg>
+<div class="shape" data-build-in="fade 5 auto" style="position:absolute;left:820px;top:593px;width:148px;height:148px;background:#FBFAF9;border:3px solid #77308A;border-radius:50%"></div>
+<svg aria-hidden="true" data-build-in="fade 5 auto" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="position:absolute;left:866px;top:639px;width:56px;height:56px;color:#77308A" viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+<p data-build-in="fade 5 auto" style="position:absolute;left:992px;top:629px;width:240px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#77308A">CONNECTIONS</p>
+<p data-build-in="fade 5 auto" style="position:absolute;left:992px;top:669px;width:240px;font-size:26px;color:#4E474B">Meet peers and mentors</p>
+<svg aria-hidden="true" class="conn" data-build-in="fade 6 auto" viewbox="0 0 1920 1080"><defs><marker id="m356917" markerheight="5" markerwidth="5" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="#1F6B5B"></path></marker></defs><line marker-end="url(#m356917)" stroke="#1F6B5B" stroke-width="2" x1="640" x2="818" y1="590" y2="830"></line></svg>
+<div class="shape" data-build-in="fade 6 auto" style="position:absolute;left:820px;top:756px;width:148px;height:148px;background:#FBFAF9;border:3px solid #1F6B5B;border-radius:50%"></div>
+<svg aria-hidden="true" data-build-in="fade 6 auto" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="position:absolute;left:866px;top:802px;width:56px;height:56px;color:#1F6B5B" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+<p data-build-in="fade 6 auto" style="position:absolute;left:992px;top:792px;width:240px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#1F6B5B">RESOURCES</p>
+<p data-build-in="fade 6 auto" style="position:absolute;left:992px;top:832px;width:240px;font-size:26px;color:#4E474B">Find local opportunities</p>
+<div data-build-in="fade 7 auto" style="position:absolute;left:1280px;top:272px;width:512px;display:flex;flex-direction:column;gap:22px">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:0px 0px 16px 0px;border-bottom:2px solid #E2DDE0">HOW A REQUEST MOVES</h3>
+<div style="display:flex;flex-direction:row;gap:20px">
+<p style="width:150px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#5C1F3D">1 · ASK</p>
+<p style="flex:1;font-size:28px;line-height:1.3">One need, in her own words.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:20px">
+<p style="width:150px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#5C1F3D">2 · ROUTE</p>
+<p style="flex:1;font-size:28px;line-height:1.3">Compass sends it to the right agent.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:20px">
+<p style="width:150px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#5C1F3D">3 · CHOOSE</p>
+<p style="flex:1;font-size:28px;line-height:1.3">She picks the next step.</p>
+</div>
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:16px 0px 16px 0px;border-bottom:2px solid #E2DDE0">WHAT IT ADDS</h3>
+<p style="font-size:28px;line-height:1.3">Personalized discovery · Student choice · Human support</p>
+<p style="padding:24px;background:#F2EDEF;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:700;line-height:1.3;color:#5C1F3D">Agents route each request; students choose what to do next.</p>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between;gap:48px">
+<p style="font-size:24px;color:#6B6470">Group 13 · Course links: M2.3 single vs multi-agent architectures · M5.6 centralized vs embedded agents</p>
+<p style="font-size:24px;color:#6B6470">4</p>
+</div>
+
+</section>
+<section data-transition="fade" id="prototype" style="background:#FBFAF9;color:#1F1A1D;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:92px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#A62B6B">The prototype</p>
+<h2 style="position:absolute;left:128px;top:132px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:54px;font-weight:800;line-height:1.1;text-transform:uppercase;color:#5C1F3D">Watch the agents work, week by week</h2>
+<div style="position:absolute;left:0px;top:224px;width:1920px;height:3px;background:#5C1F3D"></div>
+<video aria-label="Screen recording of the Compass prototype stepping through weeks 0 to 6, with the agent, campus tool and guardrail lit at each step" class="loop" loop="" muted="" playsinline="" poster="media/prototype-still.jpg" preload="metadata" src="media/prototype.mp4" style="position:absolute;left:128px;top:272px;width:1152px;height:648px;object-fit:cover;border:2px solid #E2DDE0"></video>
+<div style="position:absolute;left:1328px;top:272px;width:464px;display:flex;flex-direction:column;gap:14px">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:0px 0px 16px 0px;border-bottom:2px solid #E2DDE0">COURSE LINKS</h3>
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#5C1F3D">WEEK 0 · ONBOARDING</p>
+<p style="font-size:24px;color:#4E474B">M7.1 Data privacy</p>
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#9A4F12">WEEK 1 · ACTIVITIES</p>
+<p style="font-size:24px;color:#4E474B">M3.1 Agents in existing workflows</p>
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#2F4A8F">WEEK 3 · TUTORING</p>
+<p style="font-size:24px;color:#4E474B">M3.3 Connecting agents (MCP)</p>
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#77308A">WEEK 4 · CONNECTIONS</p>
+<p style="font-size:24px;color:#4E474B">M2.3 Multi-agent architecture</p>
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#1F6B5B">WEEK 5 · RESOURCES</p>
+<p style="font-size:24px;color:#4E474B">M3.4 Empathy · M7.3 Guardrails</p>
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#77308A">WEEK 6 · RECRUITING</p>
+<p style="font-size:24px;color:#4E474B">M5.6 Centralized vs embedded</p>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between;gap:48px">
+<p style="font-size:24px;color:#6B6470">Group 13 · Screen recording, Compass prototype v0.2.0, fictional data · Try it live: <a href="https://cptntrps.github.io/compass-demo/" rel="noopener" target="_blank">cptntrps.github.io/compass-demo</a></p>
+<p style="font-size:24px;color:#6B6470">5</p>
+</div>
+
+</section>
+<section data-transition="fade" id="local" style="background:#FBFAF9;color:#1F1A1D;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:92px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#A62B6B">Local by design</p>
+<h2 style="position:absolute;left:128px;top:132px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:54px;font-weight:800;line-height:1.1;text-transform:uppercase;color:#5C1F3D">Every recommendation starts local</h2>
+<div style="position:absolute;left:0px;top:224px;width:1920px;height:3px;background:#5C1F3D"></div>
+<div class="shape" style="position:absolute;left:208px;top:272px;width:540px;height:540px;background:#F2EDEF;border:3px dashed #A62B6B;border-radius:50%"></div>
+<p style="position:absolute;left:208px;top:312px;width:540px;font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;letter-spacing:3px;text-align:center;color:#A62B6B">50-MILE RADIUS</p>
+<p style="position:absolute;left:388px;top:516px;width:180px;padding:12px;background:#5C1F3D;font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;letter-spacing:2px;text-align:center;color:#FBFAF9">COLLEGE</p>
+<div class="shape" data-build-in="pop 1 auto" style="position:absolute;left:308px;top:398px;width:24px;height:24px;background:#9A4F12;border-radius:50%"></div>
+<p data-build-in="pop 1 auto" style="position:absolute;left:342px;top:392px;width:200px;font-size:24px;font-weight:700;color:#9A4F12">Activities</p>
+<div class="shape" data-build-in="pop 2 auto" style="position:absolute;left:628px;top:368px;width:24px;height:24px;background:#2F4A8F;border-radius:50%"></div>
+<p data-build-in="pop 2 auto" style="position:absolute;left:418px;top:362px;width:200px;font-size:24px;font-weight:700;text-align:right;color:#2F4A8F">Tutoring</p>
+<div class="shape" data-build-in="pop 3 auto" style="position:absolute;left:338px;top:688px;width:24px;height:24px;background:#77308A;border-radius:50%"></div>
+<p data-build-in="pop 3 auto" style="position:absolute;left:372px;top:682px;width:200px;font-size:24px;font-weight:700;color:#77308A">Connections</p>
+<div class="shape" data-build-in="pop 4 auto" style="position:absolute;left:618px;top:708px;width:24px;height:24px;background:#1F6B5B;border-radius:50%"></div>
+<p data-build-in="pop 4 auto" style="position:absolute;left:408px;top:702px;width:200px;font-size:24px;font-weight:700;text-align:right;color:#1F6B5B">Resources</p>
+<p style="position:absolute;left:128px;top:840px;width:720px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:700;line-height:1.2;color:#5C1F3D">Recommendations stay within 50 miles of the student’s college.</p>
+<div style="position:absolute;left:900px;top:272px;width:892px;display:flex;flex-direction:column;gap:26px">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:0px 0px 16px 0px;border-bottom:2px solid #E2DDE0">WHAT THE 50-MILE RULE ENABLES</h3>
+<div style="display:flex;flex-direction:row;gap:24px">
+<p style="width:230px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#9A4F12">ACTIVITIES</p>
+<p style="flex:1;font-size:28px;line-height:1.3">Campus clubs, arts, cultural events and nearby gatherings</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px">
+<p style="width:230px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#2F4A8F">TUTORING</p>
+<p style="flex:1;font-size:28px;line-height:1.3">Peer tutors, study groups and academic support</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px">
+<p style="width:230px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#77308A">CONNECTIONS</p>
+<p style="flex:1;font-size:28px;line-height:1.3">Student groups, mentors, alumni and networking events</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px">
+<p style="width:230px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;color:#1F6B5B">RESOURCES</p>
+<p style="flex:1;font-size:28px;line-height:1.3">Hospitals, community health events and recruiting opportunities</p>
+</div>
+<p style="padding:24px;background:#F2EDEF;font-size:26px;color:#4E474B">Show location, date, eligibility and source when available.</p>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between;gap:48px">
+<p style="font-size:24px;color:#6B6470">Group 13 · 50-mile rule agreed in the group meeting, 2026-10-19 · Course link: M3.1 agents in existing workflows</p>
+<p style="font-size:24px;color:#6B6470">6</p>
+</div>
+
+</section>
+<section data-transition="fade" id="govern" style="background:#FBFAF9;color:#1F1A1D;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:92px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#A62B6B">Technology + governance</p>
+<h2 style="position:absolute;left:128px;top:132px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:54px;font-weight:800;line-height:1.1;text-transform:uppercase;color:#5C1F3D">Autonomy, boundaries, human oversight</h2>
+<div style="position:absolute;left:0px;top:224px;width:1920px;height:3px;background:#5C1F3D"></div>
+<p style="position:absolute;left:128px;top:256px;width:1664px;font-size:30px;color:#1F1A1D">Start with trusted campus and community information; expand in stages.</p>
+<div style="position:absolute;left:128px;top:322px;width:1664px;display:flex;flex-direction:row;gap:48px">
+<div style="flex:1;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:0px 0px 16px 0px;border-bottom:2px solid #E2DDE0">1 · CONNECT</h3>
+<p style="font-size:27px;line-height:1.3">Campus calendars</p>
+<p style="font-size:27px;line-height:1.3">Tutoring directories</p>
+<p style="font-size:27px;line-height:1.3">Student clubs and alumni</p>
+<p style="font-size:27px;line-height:1.3">Hospital and community listings</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:0px 0px 16px 0px;border-bottom:2px solid #E2DDE0">2 · ORCHESTRATE</h3>
+<p style="font-size:27px;line-height:1.3">Route requests to an agent</p>
+<p style="font-size:27px;line-height:1.3">Filter by 50-mile radius</p>
+<p style="font-size:27px;line-height:1.3">Rank by student interests</p>
+<p style="font-size:27px;line-height:1.3">Cite source and update</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:0px 0px 16px 0px;border-bottom:2px solid #E2DDE0">3 · GOVERN</h3>
+<p style="font-size:27px;line-height:1.3">Human-reviewed sources</p>
+<p style="font-size:27px;line-height:1.3">Consent and data minimization</p>
+<p style="font-size:27px;line-height:1.3">No diagnosis or clinical care</p>
+<p style="font-size:27px;line-height:1.3">Escalate urgent needs to people</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;top:582px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:700;color:#5C1F3D">Students control what to save, share or act on. Compass complements university services.</p>
+<div style="position:absolute;left:128px;top:640px;width:1664px;display:flex;flex-direction:column;gap:20px;padding:28px 36px;background:#F2EDEF">
+<h3 style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B">COST-CONSCIOUS MINIMUM VIABLE PRODUCT (MVP)</h3>
+<div style="display:flex;flex-direction:row;gap:36px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#5C1F3D">PILOT ONE CAMPUS</p>
+<p style="font-size:26px;line-height:1.3;color:#4E474B">Start at one college, not across dozens of universities.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#5C1F3D">REUSE EXISTING TOOLS</p>
+<p style="font-size:26px;line-height:1.3;color:#4E474B">Connect calendars, directories, listings and approved AI platforms.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#5C1F3D">TRACK WHAT MATTERS</p>
+<p style="font-size:26px;line-height:1.3;color:#4E474B">Relevance, engagement and how much Compass costs to operate.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;color:#5C1F3D">SCALE AFTER REVIEW</p>
+<p style="font-size:26px;line-height:1.3;color:#4E474B">Expand only with proven value, cost, information and safeguards.</p>
+</div>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between;gap:48px">
+<p style="font-size:24px;color:#6B6470">Group 13 · Course links: M3.3 connecting agents (MCP) · M1.3 cost-optimized models · M7.1 to M7.4 governance</p>
+<p style="font-size:24px;color:#6B6470">7</p>
+</div>
+
+</section>
+<section data-transition="fade" id="pilot" style="background:#FBFAF9;color:#1F1A1D;font-family:'Source Sans 3', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:92px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:#A62B6B">Impact + implementation</p>
+<h2 style="position:absolute;left:128px;top:132px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:54px;font-weight:800;line-height:1.1;text-transform:uppercase;color:#5C1F3D">From concept to campus pilot</h2>
+<div style="position:absolute;left:0px;top:224px;width:1920px;height:3px;background:#5C1F3D"></div>
+<div style="position:absolute;left:128px;top:298px;width:1664px;height:3px;background:#E2DDE0"></div>
+<div class="shape" data-build-in="rise 1 auto" style="position:absolute;left:324px;top:288px;width:24px;height:24px;background:#FBFAF9;border:3px solid #5C1F3D;border-radius:50%"></div>
+<p data-build-in="rise 1 auto" style="position:absolute;left:146px;top:336px;width:380px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:2px;text-align:center;color:#5C1F3D">01 · DESIGN</p>
+<p data-build-in="rise 1 auto" style="position:absolute;left:146px;top:378px;width:380px;font-size:26px;line-height:1.3;text-align:center;color:#4E474B">Co-design journeys with students and staff</p>
+<div class="shape" data-build-in="rise 2 auto" style="position:absolute;left:732px;top:280px;width:40px;height:40px;background:#A62B6B;border-radius:50%"></div>
+<p data-build-in="rise 2 auto" style="position:absolute;left:562px;top:336px;width:380px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:2px;text-align:center;color:#A62B6B">02 · PILOT</p>
+<p data-build-in="rise 2 auto" style="position:absolute;left:562px;top:378px;width:380px;font-size:26px;line-height:1.3;text-align:center;color:#4E474B">Test four agents at one college</p>
+<div class="shape" data-build-in="rise 3 auto" style="position:absolute;left:1156px;top:288px;width:24px;height:24px;background:#FBFAF9;border:3px solid #5C1F3D;border-radius:50%"></div>
+<p data-build-in="rise 3 auto" style="position:absolute;left:978px;top:336px;width:380px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:2px;text-align:center;color:#5C1F3D">03 · MEASURE</p>
+<p data-build-in="rise 3 auto" style="position:absolute;left:978px;top:378px;width:380px;font-size:26px;line-height:1.3;text-align:center;color:#4E474B">Review quality, trust and engagement</p>
+<div class="shape" data-build-in="rise 4 auto" style="position:absolute;left:1572px;top:288px;width:24px;height:24px;background:#FBFAF9;border:3px solid #5C1F3D;border-radius:50%"></div>
+<p data-build-in="rise 4 auto" style="position:absolute;left:1394px;top:336px;width:380px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:2px;text-align:center;color:#5C1F3D">04 · SCALE</p>
+<p data-build-in="rise 4 auto" style="position:absolute;left:1394px;top:378px;width:380px;font-size:26px;line-height:1.3;text-align:center;color:#4E474B">Expand after human review</p>
+<p style="position:absolute;left:128px;top:484px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:28px;font-weight:700;text-align:center;color:#5C1F3D">Pilot, measure and scale only after human review.</p>
+<h3 style="position:absolute;left:128px;top:552px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:3px;color:#A62B6B;padding:0px 0px 16px 0px;border-bottom:2px solid #E2DDE0">SUCCESS MEASURES</h3>
+<div style="position:absolute;left:128px;top:624px;width:1664px;display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:1px;color:#5C1F3D">RELEVANCE</p>
+<p style="font-size:28px;color:#1F1A1D">Matches student needs</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:1px;color:#5C1F3D">TRUST</p>
+<p style="font-size:28px;color:#1F1A1D">Current, transparent sources</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:1px;color:#5C1F3D">BELONGING</p>
+<p style="font-size:28px;color:#1F1A1D">More student connection</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<p style="font-family:'Manrope', Arial, sans-serif;font-size:26px;font-weight:800;letter-spacing:1px;color:#5C1F3D">EFFICIENCY</p>
+<p style="font-size:28px;color:#1F1A1D">Cost per useful match</p>
+</div>
+</div>
+<div style="position:absolute;left:0px;top:744px;width:1920px;height:176px;background:#5C1F3D"></div>
+<p style="position:absolute;left:128px;top:770px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:24px;font-weight:800;letter-spacing:4px;text-align:center;color:#E3A6C4">OUR PROMISE</p>
+<p style="position:absolute;left:128px;top:808px;width:1664px;font-family:'Manrope', Arial, sans-serif;font-size:48px;font-weight:800;line-height:1.1;text-align:center;color:#FBFAF9">One Student. Four Agents. Endless Possibilities.</p>
+<p style="position:absolute;left:128px;top:870px;width:1664px;font-size:28px;text-align:center;color:#EBDCE3">Far from home, close to your goal.</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between;gap:48px">
+<p style="font-size:24px;color:#6B6470">Group 13 · Course links: M6.2 last-mile integration · M6.3 change management · M6.4 monitoring</p>
+<p style="font-size:24px;color:#6B6470">8</p>
+</div>
+
+</section>
+</div>
+<div id="nav"><button id="prev" aria-label="Previous slide">‹</button><span id="count"></span><button id="next" aria-label="Next slide">›</button></div>
+<script>
+(function(){
+  var S=[].slice.call(document.querySelectorAll('section')), i=0, stage=document.getElementById('stage');
+  function fit(){var k=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform='scale('+k+') translate(-50%,-50%)';}
+  function builds(s){var els=s.querySelectorAll('[data-build-in]');[].forEach.call(els,function(e){
+    var n=parseInt((e.getAttribute('data-build-in').match(/\d+/)||[1])[0],10);e.style.animationDelay=(0.35+0.45*(n-1))+'s';});}
+  function show(n){n=Math.max(0,Math.min(S.length-1,n));
+    S.forEach(function(s,k){s.classList.toggle('on',k===n);[].forEach.call(s.querySelectorAll('video'),function(v){
+      if(k===n&&v.classList.contains('loop')){v.muted=true;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});});
+    i=n;builds(S[n]);document.getElementById('count').textContent=(n+1)+' / '+S.length;
+    if(location.hash!=='#'+(n+1))history.replaceState(null,'','#'+(n+1));}
+  addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' '].indexOf(e.key)>=0){e.preventDefault();show(i+1);}
+    else if(['ArrowLeft','PageUp'].indexOf(e.key)>=0){e.preventDefault();show(i-1);}
+    else if(e.key==='Home')show(0);else if(e.key==='End')show(S.length-1);});
+  document.getElementById('next').onclick=function(){show(i+1);};
+  document.getElementById('prev').onclick=function(){show(i-1);};
+  var x0=null;addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+  addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)show(i+(dx<0?1:-1));x0=null;});
+  addEventListener('resize',fit);fit();
+  var h=parseInt(location.hash.slice(1),10);show(isNaN(h)?0:h-1);
+  window.deck={show:show,count:S.length,current:function(){return i;}};
+})();
+</script>
+</body></html>
